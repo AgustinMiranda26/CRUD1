@@ -31,20 +31,21 @@ const controller = {
 		const newProduct= {
 			id: uuidv4(), //id unico
 			...req.body, //spread operator
-			image: 'not-image-product.png' //imagen por defecto
+			image: 'not-image-product.png'  //imagen por defecto
 		}										
 		products.push(newProduct) //insertamos el nuevo objeto al listado 
 		//convertir a JSON
  		fs.writeFileSync(productsFilePath,JSON.stringify(products, null , ' '))
 		//SOBREESCRIBIR EL JSON
 		
-		//res.redirect('/products')
+		res.redirect('/products')
 		
 	},												
 
 	// Update - Form to edit
 	edit: (req, res) => {
-		// Do the magic
+		const productToEdit= products.find(product=> req.params.id == product.id)
+		res.render('product-edit-form', {productToEdit})
 	},
 	// Update - Method to update
 	update: (req, res) => {

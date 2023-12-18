@@ -153,12 +153,22 @@
   "image": "not-image-product.png"
  },
  {
-  "id": "ad91392e-e9bd-4ba0-b3f5-562a1d8e59a2",
-  "name": "IMPRESORA ENDER 3",
-  "price": "300000",
-  "discount": "0",
+  "id": "284719ba-8789-4991-9644-5cbfa6369c74",
+  "name": "Zapatillas",
+  "price": "25000",
+  "discount": "10",
+  "category": "in-sale",
+  "description": "ZAPATILLAS RUNING PARA UNA MEJOR PERFORMANCE ATLETICA",
+  "image": "not-image-product.png"
+ },
+ {
+  "id": "e9923258-cf69-49c8-8076-42d2cb1c2343",
+  "name": "MOCHILA NEGRO",
+  "price": "92000",
+  "discount": "10",
   "category": "visited",
-  "description": "IMPRESORA 3D EJE CARTESIANO CON EXTRUSOR DIRECTO",
+  "description": "MOCHILA CUERO NEGRA INFORMAL PARA OFICINA",
+  "img": "mochila negro.jpg",
   "image": "not-image-product.png"
  }
 ]
