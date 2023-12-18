@@ -49,12 +49,25 @@ const controller = {
 	},
 	// Update - Method to update
 	update: (req, res) => {
-		// Do the magic
+		const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+		const productToEdit= products.find(product=> req.params.id == product.id)
+		productToEdit.name= req.body.name || productToEdit.name
+		productToEdit.price= req.body.price || productToEdit.price
+		productToEdit.discount= req.body.discount || productToEdit.discount
+		productToEdit.category= req.body.category || productToEdit.category
+		productToEdit.description= req.body.description || productToEdit.description
+		productToEdit.image= req.body.image || productToEdit.image
+		fs.writeFileSync(productsFilePath,JSON.stringify(products, null , ' '))
+		res.redirect('/products')
 	},
+
 
 	// Delete - Delete one product from DB
 	destroy : (req, res) => {
-		// Do the magic
+		const id= req.params.id
+		let newProducts= products.filter(product => product.id != id)
+		res.redirect('/products')
+		fs.writeFileSync(productsFilePath,JSON.stringify(newProducts, null , ' '))
 	}
 };
 

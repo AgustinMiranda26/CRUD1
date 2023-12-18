@@ -1,9 +1,9 @@
 [
  {
   "id": 1,
-  "name": "Cafetera Moulinex Dolce Gusto Edited",
-  "price": 100,
-  "discount": 50,
+  "name": "Cafetera Moulinex Dolce Gusto ",
+  "price": "150",
+  "discount": "50",
   "category": "visited",
   "description": "Cafetera Dolce Gusto Lumio. La cafetera Dolce Gusto Lumio es de variedad automática que ha llegado con un diseño radical al que nos tenía acostumbrados Dolce Gusto.En este post te contamos todo lo que necesitas saber sobre ella, desde sus características técnicas hasta la calidad de las cápsulas o price.",
   "image": "img-cafetera-moulinex.jpg"
@@ -142,33 +142,5 @@
   "category": "in-sale",
   "description": "Deja que la música dance cobre vida con EXTRA BASS™ Anima el ambiente con EXTRA BASS™1. Un radiador pasivo trabaja con el parlante monoaural para potenciar los tonos bajos y mejorar los graves, a pesar del tamaño compacto. ",
   "image": "img-parlante-sony.jpg"
- },
- {
-  "id": "07bd5641-5249-4d1e-9e1c-852b0fbb9703",
-  "name": "IMPRESORA ENDER 3",
-  "price": "300000",
-  "discount": "0",
-  "category": "visited",
-  "description": "IMPRESORA 3D EJE CARTESIANO CON EXTRUSOR DIRECTO",
-  "image": "not-image-product.png"
- },
- {
-  "id": "284719ba-8789-4991-9644-5cbfa6369c74",
-  "name": "Zapatillas",
-  "price": "25000",
-  "discount": "10",
-  "category": "in-sale",
-  "description": "ZAPATILLAS RUNING PARA UNA MEJOR PERFORMANCE ATLETICA",
-  "image": "not-image-product.png"
- },
- {
-  "id": "e9923258-cf69-49c8-8076-42d2cb1c2343",
-  "name": "MOCHILA NEGRO",
-  "price": "92000",
-  "discount": "10",
-  "category": "visited",
-  "description": "MOCHILA CUERO NEGRA INFORMAL PARA OFICINA",
-  "img": "mochila negro.jpg",
-  "image": "not-image-product.png"
  }
 ]
