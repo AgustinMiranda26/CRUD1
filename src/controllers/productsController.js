@@ -66,8 +66,8 @@ const controller = {
 	destroy : (req, res) => {
 		const id= req.params.id
 		let newProducts= products.filter(product => product.id != id)
-		res.redirect('/products')
 		fs.writeFileSync(productsFilePath,JSON.stringify(newProducts, null , ' '))
+		res.redirect('/products/')
 	}
 };
 
