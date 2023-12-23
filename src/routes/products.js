@@ -2,6 +2,12 @@
 const express = require('express');
 const router = express.Router();
 
+//MULTER MIDDLEWARE
+const upload= require('../middlewares/multer')
+
+
+
+
 // ************ Controller Require ************
 const productsController = require('../controllers/productsController');
 
@@ -12,14 +18,14 @@ router.get('/', productsController.index);
 router.get('/detail/:id/', productsController.detail); 
 
 /*** CREATE ONE PRODUCT http://localhost:3000/products/create***/ 
-router.get('/create', productsController.create); 
-router.post('/create', productsController.store); 
+router.get('/create',  productsController.create); 
+router.post('/create', upload.single('image'), productsController.store); 
 
 
 
 /*** EDIT ONE PRODUCT http://localhost:3000/products/edit ***/ 
 router.get('/edit/:id', productsController.edit); 
-router.put('/edit/:id', productsController.update); 
+router.put('/edit/:id', upload.single('image'), productsController.update); 
 
 
 /*** DELETE ONE PRODUCT http://localhost:3000/products/delete ***/ 

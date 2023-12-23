@@ -11,6 +11,7 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const controller = {
 	// Root - Show all products
 	index: (req, res) => {
+		const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 		res.render('products.ejs', {products})
 	},
 	
@@ -28,15 +29,17 @@ const controller = {
 	// Create -  Method to store
 	store: (req, res) => {
 		//creacion de nuevo producto del formulario con req.body
+		console.log(req.file);
 		const newProduct= {
 			id: uuidv4(), //id unico
 			...req.body, //spread operator
-			image: 'not-image-product.png'  //imagen por defecto
+			image: req.file?.filename || 'not-image-product.png', //imagen por defecto
+			...req.body //spread operator
 		}										
 		products.push(newProduct) //insertamos el nuevo objeto al listado 
-		//convertir a JSON
+		//convertir a JSON-SOBREESCRIBIR EL JSON
  		fs.writeFileSync(productsFilePath,JSON.stringify(products, null , ' '))
-		//SOBREESCRIBIR EL JSON
+	
 		
 		res.redirect('/products')
 		
@@ -49,14 +52,21 @@ const controller = {
 	},
 	// Update - Method to update
 	update: (req, res) => {
+		//JSON DE PRODUCTOS
 		const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+		//BUSCA LOS PRODUCTOS A EDITAR
 		const productToEdit= products.find(product=> req.params.id == product.id)
+		
+		//ACCTUALIZACION O NO DE CADA ITEM DEL PRODUCTO
 		productToEdit.name= req.body.name || productToEdit.name
 		productToEdit.price= req.body.price || productToEdit.price
 		productToEdit.discount= req.body.discount || productToEdit.discount
 		productToEdit.category= req.body.category || productToEdit.category
 		productToEdit.description= req.body.description || productToEdit.description
-		productToEdit.image= req.body.image || productToEdit.image
+		productToEdit.image= req.file?.filename || productToEdit.image
+		
+		
+		//ESCRIBE EL NUEVO JSON CON LOS CAMBIOS
 		fs.writeFileSync(productsFilePath,JSON.stringify(products, null , ' '))
 		res.redirect('/products')
 	},
@@ -65,9 +75,10 @@ const controller = {
 	// Delete - Delete one product from DB
 	destroy : (req, res) => {
 		const id= req.params.id
+		const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+		res.redirect('/products/')
 		let newProducts= products.filter(product => product.id != id)
 		fs.writeFileSync(productsFilePath,JSON.stringify(newProducts, null , ' '))
-		res.redirect('/products/')
 	}
 };
 
